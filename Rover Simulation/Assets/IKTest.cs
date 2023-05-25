@@ -19,9 +19,12 @@ public class IKTest : MonoBehaviour
 
     void Update()
     {
-        Vector3 translatedPosition = new Vector3(new Vector2(target.position.x, target.position.z).magnitude, target.position.y);
+        Vector3 translatedPosition = new Vector3(new Vector2(target.position.x, target.position.z).magnitude * (target.position.z - origin.position.z >= 0 ? 1 : -1), target.position.y, origin.position.z);
         float zRot = Mathf.Atan2(target.position.z - origin.position.z, target.position.x - origin.position.x);
         float dist = Vector3.Distance(translatedPosition, origin.position);
-        
+
+        float yRot = Mathf.Atan2(translatedPosition.normalized.y, translatedPosition.normalized.x);
+
+
     }
 }
