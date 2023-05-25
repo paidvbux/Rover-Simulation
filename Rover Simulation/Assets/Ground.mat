@@ -73,6 +73,18 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_3a69feb5bc1f492dbd59795de7f8546b_Texture_1:
+        m_Texture: {fileID: 2800000, guid: f15453c5e25703942b480f17a40794f5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_7afee7f3a6ca4a229d123ec539817240_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 92c736fd59871684291cf4affdb8032a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_f6f627ef6b1c4cf5bce9487f5df68041_Texture_1:
+        m_Texture: {fileID: 2800000, guid: bf4846dc2a1a844a29268dbc71f1c454, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -122,5 +134,6 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Glow_Color: {r: 3.2388265, g: 5.612487, b: 5.656854, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
