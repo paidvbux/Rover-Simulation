@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class IKTest : MonoBehaviour
 {
+    public Transform turret;
     public Transform link1;
     public Transform link2;
     public Transform endEffector;
@@ -34,6 +35,8 @@ public class IKTest : MonoBehaviour
 
         link2.position = new Vector3(Mathf.Cos(rot_2), Mathf.Sin(rot_2)) * linkLength1 + link1.position;
         endEffector.position = targetPosition;
+
+        turret.localEulerAngles = new Vector3(0, -zRot, 0);
 
         link2.RotateAround(link1.position, Vector3.up, -zRot);
         endEffector.RotateAround(link1.position, Vector3.up, -zRot);
