@@ -20,6 +20,7 @@ public class UDPReceiver : MonoBehaviour
         receiveThread.IsBackground = true;
         receiveThread.Start();
     }
+
     void ReceiveData()
     {
         receiveClient = new UdpClient(port);

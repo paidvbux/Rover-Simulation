@@ -13,6 +13,7 @@ public class MatlabController : MonoBehaviour
 	{
 		robotController = robot.GetComponent<RobotController>();
 		controlSensorSignal = GetComponentInChildren<CommunicationController>();
+
 		//Set the robot to initial position 
 		robotController.RotateJoint(0, 0);
 		robotController.RotateJoint(1, 45);
@@ -34,6 +35,7 @@ public class MatlabController : MonoBehaviour
 		{
 			controlSensorSignal.sensorOutput[i] = (double)jointPositions[i] * 180 / Math.PI;
 		}
+		print(controlSensorSignal.sensorInput.Length);
 		controlSensorSignal.sensorOutput[9] = controlSensorSignal.sensorInput[9];
 		//send back the time to estimate the time delay.
 

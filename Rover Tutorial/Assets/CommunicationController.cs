@@ -4,9 +4,19 @@ using System.Collections.Generic;
 
 public class CommunicationController : MonoBehaviour, IReceiverObserver
 {
-	public double[] sensorOutput;
-	public double[] sensorInput;
-	public UDPTransmitter UdpTransmitter;
+	UDPTransmitter UdpTransmitter;
+    UDPReceiver UdpReceiver;
+	
+	[HideInInspector] public double[] sensorOutput;
+    [HideInInspector] public double[] sensorInput;
+	
+	void Awake()
+	{
+		UdpReceiver = GetComponent<UDPReceiver>();
+		UdpReceiver.observer = this;
+		UdpTransmitter = GetComponent<UDPTransmitter>();
+	}
+	
 	void Start()
 	{
 		int numOfOutputData = 18;

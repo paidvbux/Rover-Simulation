@@ -40,7 +40,7 @@ public class UDPTransmitter : MonoBehaviour
 		}
 		catch (Exception err)
 		{
-			Debug.Log($"<color=red>{err.Message}</ color >");
+			Debug.Log($"<color=red>{err.Message}</color>");
 		}
 	}
 }
