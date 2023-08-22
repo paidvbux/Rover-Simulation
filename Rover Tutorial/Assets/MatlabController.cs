@@ -13,13 +13,12 @@ public class MatlabController : MonoBehaviour
 	{
 		robotController = robot.GetComponent<RobotController>();
 		controlSensorSignal = GetComponentInChildren<CommunicationController>();
-
 		//Set the robot to initial position 
 		robotController.RotateJoint(0, 0);
-		robotController.RotateJoint(1, 45);
-		robotController.RotateJoint(2, -75);
-		robotController.RotateJoint(3, 120);
-		robotController.RotateJoint(4, 90);
+		robotController.RotateJoint(1, -135);
+		robotController.RotateJoint(2, 135);
+		robotController.RotateJoint(3, 90);
+		robotController.RotateJoint(4, 0);
 		robotController.RotateJoint(5, 0);
 	}
 	void FixedUpdate()
@@ -35,16 +34,17 @@ public class MatlabController : MonoBehaviour
 		{
 			controlSensorSignal.sensorOutput[i] = (double)jointPositions[i] * 180 / Math.PI;
 		}
-		print(controlSensorSignal.sensorInput.Length);
+
+		print($"{controlSensorSignal.sensorOutput.Length}, {controlSensorSignal.sensorInput.Length}");
 		controlSensorSignal.sensorOutput[9] = controlSensorSignal.sensorInput[9];
 		//send back the time to estimate the time delay.
 
-		controlSensorSignal.sensorOutput[10] = Input.GetAxis("ArmUp");
-		controlSensorSignal.sensorOutput[11] = Input.GetAxis("ArmLeft");
-		controlSensorSignal.sensorOutput[12] = Input.GetAxis("ArmIn");
-		controlSensorSignal.sensorOutput[13] = Input.GetAxis("ArmTilt");
-		controlSensorSignal.sensorOutput[14] = Input.GetAxis("ArmPan");
-		controlSensorSignal.sensorOutput[15] = Input.GetAxis("ArmRoll");
+		//controlSensorSignal.sensorOutput[10] = Input.GetAxis("ArmUp");
+		//controlSensorSignal.sensorOutput[11] = Input.GetAxis("ArmLeft");
+		//controlSensorSignal.sensorOutput[12] = Input.GetAxis("ArmIn");
+		//controlSensorSignal.sensorOutput[13] = Input.GetAxis("ArmTilt");
+		//controlSensorSignal.sensorOutput[14] = Input.GetAxis("ArmPan");
+		//controlSensorSignal.sensorOutput[15] = Input.GetAxis("ArmRoll");
 		//Sensor output: [0:8] joint rotation readings; [9] Received Time; [10:15] joysticks commands 
 	}
 }

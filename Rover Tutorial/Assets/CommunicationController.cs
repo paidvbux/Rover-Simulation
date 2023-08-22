@@ -5,22 +5,23 @@ using System.Collections.Generic;
 public class CommunicationController : MonoBehaviour, IReceiverObserver
 {
 	UDPTransmitter UdpTransmitter;
-    UDPReceiver UdpReceiver;
-	
+	UDPReceiver UdpReceiver;
+
 	[HideInInspector] public double[] sensorOutput;
-    [HideInInspector] public double[] sensorInput;
+	[HideInInspector] public double[] sensorInput;
 	
 	void Awake()
-	{
+    {
 		UdpReceiver = GetComponent<UDPReceiver>();
 		UdpReceiver.observer = this;
 		UdpTransmitter = GetComponent<UDPTransmitter>();
-	}
-	
+    }
+
 	void Start()
 	{
 		int numOfOutputData = 18;
 		sensorOutput = new double[numOfOutputData];
+		sensorInput = new double[numOfOutputData];
 	}
 
 	void IReceiverObserver.OnDataReceived(double[] val)

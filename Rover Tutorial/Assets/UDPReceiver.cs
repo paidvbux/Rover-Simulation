@@ -13,6 +13,11 @@ public class UDPReceiver : MonoBehaviour
     public Thread receiveThread;
     public IReceiverObserver observer;
 
+    void Start()
+    {
+        Initialize();    
+    }
+
     public void Initialize()
     {
         // Receive
@@ -20,7 +25,6 @@ public class UDPReceiver : MonoBehaviour
         receiveThread.IsBackground = true;
         receiveThread.Start();
     }
-
     void ReceiveData()
     {
         receiveClient = new UdpClient(port);
@@ -39,6 +43,20 @@ public class UDPReceiver : MonoBehaviour
             {
                 Debug.Log("<color=red>" + err.Message + "</color>");
             }
+        }
+    }
+
+    void OnApplicationQuit()
+    {
+        try
+        {
+            receiveThread.Abort();
+            receiveThread = null;
+            receiveClient.Close();
+        }
+        catch (Exception err)
+        {
+            Debug.Log("<color=red>" + err.Message + "</color>");
         }
     }
 }

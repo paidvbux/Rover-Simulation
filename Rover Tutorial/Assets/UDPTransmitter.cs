@@ -18,6 +18,21 @@ public class UDPTransmitter : MonoBehaviour
 		transmitClient = new UdpClient();
     }
 
+	public void Send(double val)
+    {
+		try
+		{
+			// Convert double into byte array (size of 8)  
+			byte[] serverMessageAsByteArray = BitConverter.GetBytes(val);
+
+			transmitClient.Send(serverMessageAsByteArray, serverMessageAsByteArray.Length, remoteEndPoint);
+		}
+		catch (Exception err)
+		{
+			Debug.Log($"<color=red>{err.Message}</color>");
+		}
+	}
+
     public void Send(double[] val)
 	{
 		try
@@ -33,10 +48,22 @@ public class UDPTransmitter : MonoBehaviour
 				//Constructing the byte array to be sent
 				for (int j = 0; j < bLen; j++)
 				{
-					serverMessage[bLen * i + j] = byteTemp[i];
+					serverMessage[bLen * i + j] = byteTemp[j];
 				}
 			}
 			transmitClient.Send(serverMessage, serverMessage.Length, remoteEndPoint);
+		}
+		catch (Exception err)
+		{
+			Debug.LogError(err.Message);
+		}
+	}
+
+	private void OnApplicationQuit()
+	{
+		try
+		{
+			transmitClient.Close();
 		}
 		catch (Exception err)
 		{
