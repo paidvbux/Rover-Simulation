@@ -21,7 +21,6 @@ public class CommunicationController : MonoBehaviour, IReceiverObserver
 	{
 		int numOfOutputData = 18;
 		sensorOutput = new double[numOfOutputData];
-		sensorInput = new double[numOfOutputData];
 	}
 
 	void IReceiverObserver.OnDataReceived(double[] val)
