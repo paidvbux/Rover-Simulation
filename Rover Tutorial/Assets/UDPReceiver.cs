@@ -38,6 +38,8 @@ public class UDPReceiver : MonoBehaviour
                 Buffer.BlockCopy(data, 0, values, 0, values.Length * 8);
                 if (observer != null)
                     observer.OnDataReceived(values);
+                values[0] *= -1;
+                values[5] *= -1;
             }
             catch (Exception err)
             {

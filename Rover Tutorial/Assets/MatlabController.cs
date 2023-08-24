@@ -13,15 +13,22 @@ public class MatlabController : MonoBehaviour
 	{
 		robotController = robot.GetComponent<RobotController>();
 		controlSensorSignal = GetComponentInChildren<CommunicationController>();
-		//Set the robot to initial position 
-		robotController.RotateJoint(0, 0);
-		robotController.RotateJoint(1, -135);
-		robotController.RotateJoint(2, 135);
-		robotController.RotateJoint(3, 90);
-		robotController.RotateJoint(4, 0);
-		robotController.RotateJoint(5, 0);
-	}
-	void FixedUpdate()
+        //Set the robot to initial position 
+        //robotController.RotateJoint(0, 0);   
+        //robotController.RotateJoint(1, 135); 
+        //robotController.RotateJoint(2, -135);
+        //robotController.RotateJoint(3, -90); 
+        //robotController.RotateJoint(4, 0);   
+        //robotController.RotateJoint(5, 0);   
+        robotController.RotateJoint(0, 0);
+        robotController.RotateJoint(1, 0);
+        robotController.RotateJoint(2, 0);
+        robotController.RotateJoint(3, 0);
+        robotController.RotateJoint(4, 0);
+        robotController.RotateJoint(5, 0);
+
+    }
+    void FixedUpdate()
 	{
 		robot.TeleportRoot(robotMountBase.position, robotMountBase.rotation);
 		for (int i = 0; (i < robotController.joints.Length) && (i < controlSensorSignal.sensorInput.Length); i++)
