@@ -26,6 +26,8 @@ public class RobotController : MonoBehaviour
         Gizmos.color = Color.red;
         pos = new Vector3(endpoint.position.x, pos1.y, pos1.z);
         Gizmos.DrawLine(pos1, pos);
+
+        //print($"Position: {endpoint.position - origin.position}\nRotation: {endpoint.rotation}");
     }
 }
 
