@@ -29,7 +29,7 @@ public class UDPTransmitter : MonoBehaviour
 		}
 		catch (Exception err)
 		{
-			Debug.Log($"<color=red>{err.Message}</color>");
+			Debug.LogError(err.Message);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class UDPTransmitter : MonoBehaviour
 		}
 		catch (Exception err)
 		{
-			Debug.Log($"<color=red>{err.Message}</color>");
+			Debug.LogError($"<color=red>{err.Message}</color>");
 		}
 	}
 }

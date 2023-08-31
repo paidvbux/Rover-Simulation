@@ -7,6 +7,8 @@ public class MatlabController : MonoBehaviour
 	public ArticulationBody robot;
 	public Transform robotMountBase;
 
+	[SerializeField] Transform targetPos;
+
 	CommunicationController controlSensorSignal;
 	RobotController robotController;
 	void Start()
@@ -36,15 +38,24 @@ public class MatlabController : MonoBehaviour
 			controlSensorSignal.sensorOutput[i] = (double)jointPositions[i] * 180 / Math.PI;
 		}
 
-		controlSensorSignal.sensorOutput[9] = controlSensorSignal.sensorInput[9];
+
 		//send back the time to estimate the time delay.
 
+		//controlSensorSignal.sensorOutput[9] = controlSensorSignal.sensorInput[9];
 		//controlSensorSignal.sensorOutput[10] = Input.GetAxis("ArmUp");
 		//controlSensorSignal.sensorOutput[11] = Input.GetAxis("ArmLeft");
 		//controlSensorSignal.sensorOutput[12] = Input.GetAxis("ArmIn");
 		//controlSensorSignal.sensorOutput[13] = Input.GetAxis("ArmTilt");
 		//controlSensorSignal.sensorOutput[14] = Input.GetAxis("ArmPan");
 		//controlSensorSignal.sensorOutput[15] = Input.GetAxis("ArmRoll");
-		//Sensor output: [0:8] joint rotation readings; [9] Received Time; [10:15] joysticks commands 
+		//Sensor output: [0:8] joint rotation readings; [9] Received Time; [10:15] joysticks commands
+
+		controlSensorSignal.sensorOutput[18] = targetPos.position.x - robotController.origin.position.x;
+		controlSensorSignal.sensorOutput[19] = targetPos.position.z - robotController.origin.position.z;
+		controlSensorSignal.sensorOutput[20] = targetPos.position.y - robotController.origin.position.y;
+		controlSensorSignal.sensorOutput[21] = targetPos.localEulerAngles.x;
+		controlSensorSignal.sensorOutput[22] = targetPos.localEulerAngles.y;
+		controlSensorSignal.sensorOutput[23] = targetPos.localEulerAngles.z;
+
 	}
 }

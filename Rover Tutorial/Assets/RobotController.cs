@@ -5,7 +5,7 @@ public class RobotController : MonoBehaviour
 {
     public ArticulationJointController[] joints;
 
-    [SerializeField] Transform origin;
+    public Transform origin;
     [SerializeField] Transform endpoint;
 
     public void RotateJoint(int jointIndex, float targetRotation)
