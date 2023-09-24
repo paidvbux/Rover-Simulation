@@ -41,7 +41,7 @@ public class UDPReceiver : MonoBehaviour
             }
             catch (Exception err)
             {
-                Debug.LogError("<color=red>" + err.Message + "</color>");
+                Debug.LogError(err.Message);
             }
         }
     }
@@ -56,7 +56,7 @@ public class UDPReceiver : MonoBehaviour
         }
         catch (Exception err)
         {
-            Debug.LogError("<color=red>" + err.Message + "</color>");
+            Debug.LogError(err.Message);
         }
     }
 }
