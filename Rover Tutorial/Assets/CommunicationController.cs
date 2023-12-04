@@ -25,13 +25,6 @@ public class CommunicationController : MonoBehaviour, IReceiverObserver
 
 	void IReceiverObserver.OnDataReceived(double[] val)
 	{
-		string message = "[";
-
-		foreach (double value in val)
-			message += $"{value:0.00},";
-
-		print($"{message}]");
-
 		sensorInput = val;
 	}
 
