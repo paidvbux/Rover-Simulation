@@ -6,6 +6,7 @@ public class MatlabController : MonoBehaviour
 {
 	public ArticulationBody robot;
 	public Transform robotMountBase;
+	public Transform endEffector;
 
 	[SerializeField] Transform targetPos;
 
@@ -16,11 +17,11 @@ public class MatlabController : MonoBehaviour
 		robotController = robot.GetComponent<RobotController>();
 		controlSensorSignal = GetComponentInChildren<CommunicationController>();
         //Set the robot to initial position 
-        robotController.RotateJoint(0, 0);
-        robotController.RotateJoint(1, -60);
-        robotController.RotateJoint(2, 45);
-        robotController.RotateJoint(3, -30);
-        robotController.RotateJoint(4, 0);
+        robotController.RotateJoint(0, 90);
+        robotController.RotateJoint(1, 0);
+        robotController.RotateJoint(2, 0);
+        robotController.RotateJoint(3, -90);
+        robotController.RotateJoint(4, -90);
         robotController.RotateJoint(5, 0);
 
     }
@@ -56,6 +57,14 @@ public class MatlabController : MonoBehaviour
 		controlSensorSignal.sensorOutput[21] = targetPos.localEulerAngles.x;
 		controlSensorSignal.sensorOutput[22] = targetPos.localEulerAngles.y;
 		controlSensorSignal.sensorOutput[23] = targetPos.localEulerAngles.z;
+		controlSensorSignal.sensorOutput[24] = endEffector.position.x - robotController.origin.position.x;
+		controlSensorSignal.sensorOutput[25] = endEffector.position.z - robotController.origin.position.z;
+		controlSensorSignal.sensorOutput[26] = endEffector.position.y - robotController.origin.position.y;
 
 	}
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(targetPos.position, endEffector.position);
+    }
 }
