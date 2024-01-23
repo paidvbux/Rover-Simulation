@@ -22,8 +22,6 @@ public class MatlabController : MonoBehaviour
         robotController.RotateJoint(2, 0);
         robotController.RotateJoint(3, -90);
         robotController.RotateJoint(4, -90);
-        robotController.RotateJoint(5, 0);
-
     }
     void FixedUpdate()
 	{

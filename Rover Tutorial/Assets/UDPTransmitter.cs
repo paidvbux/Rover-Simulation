@@ -42,7 +42,7 @@ public class UDPTransmitter : MonoBehaviour
 			int bLen = 8;
 			byte[] serverMessage = new byte[valLen * bLen];
 			val[0] *= -1;
-			val[5] *= -1;
+			//val[5] *= -1;
 			for (int i = 0; i < valLen; i++)
 			{
 				//Convert double values into byte array of length 8
