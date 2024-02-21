@@ -19,7 +19,7 @@ public class CommunicationController : MonoBehaviour, IReceiverObserver
 
 	void Start()
 	{
-		int numOfOutputData = 27;
+		int numOfOutputData = 30;
 		sensorOutput = new double[numOfOutputData];
 	}
 
