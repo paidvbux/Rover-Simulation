@@ -4,9 +4,20 @@ using UnityEngine;
 
 public class RoverScript : MonoBehaviour
 {
-    [SerializeField] Transform robotOrigin;
-    [SerializeField] Transform displayOrigin;
-    [SerializeField] Transform[] legs;
+    [SerializeField] ArticulationBody root;
+    [SerializeField] MotorScript[] legs;
+
+    [SerializeField] MotorScript[] swerveMotors;
+    [SerializeField] MotorScript[] wheelMotors;
+
+    [SerializeField] float speed;
+
+   /*
+    index 0 -> right front
+    index 1 -> left front
+    index 2 -> right rear
+    index 3 -> left rear
+    */
 
     void Start()
     {
@@ -15,12 +26,13 @@ public class RoverScript : MonoBehaviour
 
     void Update()
     {
-        displayOrigin.localEulerAngles = new Vector3(0, robotOrigin.localEulerAngles.y, robotOrigin.localEulerAngles.z);
-        legs[0].localEulerAngles = new Vector3(legs[0].localEulerAngles.x - robotOrigin.localEulerAngles.x, 
-                                               legs[0].localEulerAngles.y, 
-                                               legs[0].localEulerAngles.z);
-        legs[1].localEulerAngles = new Vector3(legs[1].localEulerAngles.x - robotOrigin.localEulerAngles.x, 
-                                               legs[1].localEulerAngles.y, 
-                                               legs[1].localEulerAngles.z);
+        float horizontal = Input.GetAxisRaw("Horizontal") * speed;
+        float vertical = Input.GetAxisRaw("Vertical") * speed;
+
+        for (int i = 0; i < swerveMotors.Length; i++)
+            swerveMotors[i].rotateTo(horizontal, true);
+        
+        for (int i = 0; i < wheelMotors.Length; i++)
+            wheelMotors[i].rotateTo(vertical, true);
     }
 }
