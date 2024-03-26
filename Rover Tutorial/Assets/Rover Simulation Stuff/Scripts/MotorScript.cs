@@ -8,7 +8,15 @@ public class MotorScript : MonoBehaviour
     [SerializeField] ArticulationBody body => GetComponent<ArticulationBody>();
     public float target;
 
-    public void rotateTo(float angle, bool additive)
+    public void rotateTo(float angle)
+    {
+        target = angle;
+        ArticulationDrive drive = body.xDrive;
+        drive.target = target;
+        body.xDrive = drive;
+    }
+    
+    public void rotateTo(float angle, bool increment)
     {
         target += angle;
         ArticulationDrive drive = body.xDrive;
@@ -16,11 +24,11 @@ public class MotorScript : MonoBehaviour
         body.xDrive = drive;
     }
 
-    public void rotateTo(float angle)
+    public void setVelocity(float vel)
     {
-        target = angle;
+        target = vel;
         ArticulationDrive drive = body.xDrive;
-        drive.target = target;
+        drive.targetVelocity = target;
         body.xDrive = drive;
     }
 }

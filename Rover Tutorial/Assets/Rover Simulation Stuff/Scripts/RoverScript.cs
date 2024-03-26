@@ -19,12 +19,7 @@ public class RoverScript : MonoBehaviour
     index 3 -> left rear
     */
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
+    void FixedUpdate()
     {
         float horizontal = Input.GetAxisRaw("Horizontal") * speed;
         float vertical = Input.GetAxisRaw("Vertical") * speed;
