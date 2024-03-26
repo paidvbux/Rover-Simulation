@@ -43,7 +43,12 @@ public class CommunicationController : MonoBehaviour, IReceiverObserver
     void IReceiverObserver.OnDataReceived(double[] val)
     {
         sensor_input = val;
-        //allValues.Add(new RotationAngles(val));
+        string message = "";
+        foreach (double v in val)
+        {
+            message += $"{v}, ";
+        }
+        //print(message);
     }
 
     void FixedUpdate()

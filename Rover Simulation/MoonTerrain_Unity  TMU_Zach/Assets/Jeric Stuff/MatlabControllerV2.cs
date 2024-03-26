@@ -12,7 +12,7 @@ public class MatlabControllerV2 : MonoBehaviour
     public ArticulationBody armBase;
     public Transform robotMountbase;
     public Transform target;
-    public Transform endEffector    ;
+    public Transform endEffector;
 
     void Start()
     {

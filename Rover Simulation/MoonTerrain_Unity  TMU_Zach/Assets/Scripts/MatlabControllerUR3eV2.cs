@@ -41,6 +41,10 @@ public class MatlabControllerUR3eV2 : MonoBehaviour
         {
             control_sensor_signal.sensor_output[i] = (double) jointPositions[i] * 180/3.1415;
         }
+
+        if (control_sensor_signal.sensor_input.Length < 9)
+            return;
+
         control_sensor_signal.sensor_output[9] = control_sensor_signal.sensor_input[9];//send back the time to estimate the time delay.
 
         control_sensor_signal.sensor_output[10] = Input.GetAxis("ArmUp");
@@ -50,9 +54,9 @@ public class MatlabControllerUR3eV2 : MonoBehaviour
         control_sensor_signal.sensor_output[14] = Input.GetAxis("ArmPan");
         control_sensor_signal.sensor_output[15] = Input.GetAxis("ArmRoll");
         //Sensor output: [0:8] joint rotation readings; [9] Received Time; [10:15] joysticks commands 
-        for (int i=0; i<15;i++)
-        {
-            Debug.Log("Joystic" + control_sensor_signal.sensor_output[i]);
-        }
+        //for (int i=0; i<15;i++)
+        //{
+        //    Debug.Log("Joystic" + control_sensor_signal.sensor_output[i]);
+        //}
     }
 }

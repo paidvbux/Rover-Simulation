@@ -10,6 +10,7 @@ public class TempWheelScript : MonoBehaviour
 
     void Start()
     {
+        wheelCounter = 0;
         articulation = GetComponent<ArticulationBody>();
     }
 
@@ -24,17 +25,18 @@ public class TempWheelScript : MonoBehaviour
 
     public void RotateWheel(float angularSpeed)
     {
-        float rotationChange = angularSpeed * Time.fixedDeltaTime;
-        float rotationGoal = CurrentPrimaryAxisRotation() + rotationChange;
-        RotateTo(rotationGoal);
+        float rotationChange = angularSpeed * Time.fixedDeltaTime * Mathf.Rad2Deg;
+        print(angularSpeed);
+        wheelCounter += rotationChange;
+        RotateTo(wheelCounter);
     }
 
-    float CurrentPrimaryAxisRotation()
-    {
-        float currentRotationRads = articulation.jointPosition[0];
-        float currentRotation = Mathf.Rad2Deg * currentRotationRads;
-        return currentRotation;
-    }
+    //float CurrentPrimaryAxisRotation()
+    //{
+    //    float currentRotationRads = articulation.jointPosition[0];
+    //    float currentRotation = currentRotationRads;
+    //    return currentRotation;
+    //}
 
     void RotateTo(float primaryAxisRotation)
     {
